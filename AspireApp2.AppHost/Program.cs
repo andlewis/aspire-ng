@@ -3,7 +3,6 @@ using Microsoft.Extensions.Hosting;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-
 // https://learn.microsoft.com/en-us/dotnet/aspire/database/sql-server-integration
 var sqlServer = builder.AddSqlServer("sqlserver")
     .WithLifetime(ContainerLifetime.Persistent);
@@ -25,6 +24,6 @@ builder.AddNpmApp("FrontEnd", "../angularoo")
         .WithHttpEndpoint(env: "PORT")
         .WithExternalHttpEndpoints()
         .PublishAsDockerFile();
-
+        
 
 builder.Build().Run();
